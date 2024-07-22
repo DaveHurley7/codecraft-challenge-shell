@@ -10,7 +10,7 @@ def is_exec(command):
             dir_files = os.listdir(pdir)
             for file in dir_files:
                 if file == command:
-                    print(command)
+                    print("DIR:",pdir)
                     print(os.absname(command))
                     return os.absname(command)
     print("PATH NOT FOUND")
