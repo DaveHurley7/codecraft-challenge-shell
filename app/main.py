@@ -29,6 +29,8 @@ def main():
         if command.startswith("echo"):
             args = command.split(maxsplit=1)
             sys.stdout.write(args[1] + "\n")
+        elif command.startswith("pwd"):
+            sys.stdout.write(os.getcwd() + "\n")
         elif command.startswith("type"):
             args = command.split()
             if args[1] in builtin_cmds:
