@@ -2,7 +2,7 @@ import sys
 import os
 import subprocess
 
-builtin_cmds = ["echo","type","exit","pwd"]
+builtin_cmds = ["echo","type","exit","pwd","cd"]
 
 def is_exec(command):
     path_dirs = os.environ["PATH"].split(":")
@@ -26,11 +26,18 @@ def main():
         sys.stdout.flush()
     # Wait for user input
         command = input()
-        if command.startswith("echo"):
+        if command == "pwd":
+            sys.stdout.write(os.getcwd() + "\n")
+        elif command.startswith("echo"):
             args = command.split(maxsplit=1)
             sys.stdout.write(args[1] + "\n")
-        elif command.startswith("pwd"):
-            sys.stdout.write(os.getcwd() + "\n")
+        elif command.startswith("cd"):
+            args = command.split()
+            dir_arg = args[1]
+            if os.path.isdir(dir_arg):
+                os.chdir(dir_arg)
+            else:
+                sys.stdout.write("cd: " + dir_arg + ": No such file or directory\n")
         elif command.startswith("type"):
             args = command.split()
             if args[1] in builtin_cmds:
