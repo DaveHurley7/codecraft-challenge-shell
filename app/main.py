@@ -2,7 +2,7 @@ import sys
 import os
 import subprocess
 
-builtin_cmds = ["echo","type","exit"]
+builtin_cmds = ["echo","type","exit","pwd"]
 
 def is_exec(command):
     path_dirs = os.environ["PATH"].split(":")
