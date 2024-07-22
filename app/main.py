@@ -8,6 +8,7 @@ def main():
         sys.stdout.flush()
     # Wait for user input
         command = input()
+        print(command)
         if command.startswith("exit"):
             args = command.split()
             quit(args[1])
