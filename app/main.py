@@ -6,12 +6,13 @@ builtin_cmds = ["echo","type","exit"]
 def is_exec(command):
     path_dirs = os.environ["PATH"].split(":")
     for pdir in path_dirs:
-        dir_files = os.listdir(pdir)
-        for file in dir_files:
-            if file == command:
-                print("FOUND!")
-                print(os.absname(command))
-                return os.absname(command)
+        if os.path.isdir(pdir):
+            dir_files = os.listdir(pdir)
+            for file in dir_files:
+                if file == command:
+                    print("FOUND!")
+                    print(os.absname(command))
+                    return os.absname(command)
     print("PATH NOT FOUND")
     return None
 
