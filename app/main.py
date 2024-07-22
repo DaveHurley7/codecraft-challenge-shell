@@ -5,6 +5,7 @@ builtin_cmds = ["echo","type","exit"]
 
 def is_exec(command):
     path_dirs = os.environ("PATH").split(":")
+    print("PATH DIRS:",path_dirs)
     for pdir in path_dirs:
         dir_files = os.listdir(pdir)
         for file in dir_files:
