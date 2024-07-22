@@ -4,7 +4,7 @@ import os
 builtin_cmds = ["echo","type","exit"]
 
 def is_exec(command):
-    print("CHECKING PATH")
+    print("CHECKING PATH",command)
     path_dirs = os.environ("PATH").split(":")
     print("PATH DIRS:",path_dirs)
     for pdir in path_dirs:
@@ -26,7 +26,6 @@ def main():
             sys.stdout.write(args[1] + "\n")
         elif command.startswith("type"):
             args = command.split()
-            print("USING TYPE CMD",args)
             if args[1] in builtin_cmds:
                 print("BUILT IN")
                 sys.stdout.write(args[1] + " is a shell builtin\n")
