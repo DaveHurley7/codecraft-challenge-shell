@@ -26,7 +26,7 @@ def main():
             args = command.split()
             if args[1] in builtin_cmds:
                 sys.stdout.write(args[1] + " is a shell builtin\n")
-            elif execcmd := is_exec(args[1])
+            elif execcmd := is_exec(args[1]):
                 sys.stdout.write(args[1] + " is " + os.path.absname(args[1]) + "\n")
             else:
                 sys.stdout.write(args[1] + " not found\n")
