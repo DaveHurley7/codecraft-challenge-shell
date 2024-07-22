@@ -1,5 +1,6 @@
 import sys
 import os
+import subprocess
 
 builtin_cmds = ["echo","type","exit"]
 
@@ -12,6 +13,11 @@ def is_exec(command):
                 if file == command:
                     return pdir + "/" + file
     return None
+
+def exec_with_args(command):
+    prog, *args = command.split()
+    prog_path = is_exec(prog)
+    return [prog_path, *args] if prog_path else None
 
 def main():
     # Uncomment this block to pass the first stage
@@ -34,6 +40,8 @@ def main():
         elif command.startswith("exit"):
             args = command.split()
             quit(int(args[1]))
+        elif cmd := exec_with_args(command):
+            subprocess.run(cmd)
         else:
             sys.stdout.write(command + ": command not found\n")
 
