@@ -1,6 +1,16 @@
 import sys
+import os
 
 builtin_cmds = ["echo","type","exit"]
+
+def is_exec(command):
+    path_dirs = os.environ("PATH").split(":")
+    for pdir in path_dirs:
+        dir_files = os.listdir(pdir)
+        for file in dir_files:
+            if os.basename(file) == command:
+                return command
+    return None
 
 def main():
     # Uncomment this block to pass the first stage
@@ -16,6 +26,8 @@ def main():
             args = command.split()
             if args[1] in builtin_cmds:
                 sys.stdout.write(args[1] + " is a shell builtin\n")
+            elif execcmd := is_exec(args[1])
+                sys.stdout.write(args[1] + " is " + os.path.absname(args[1]) + "\n")
             else:
                 sys.stdout.write(args[1] + " not found\n")
         elif command.startswith("exit"):
