@@ -30,7 +30,7 @@ def main():
             elif execpath := is_exec(args[1]):
                 sys.stdout.write(args[1] + " is " + execpath + "\n")
             else:
-                sys.stdout.write(args[1] + " not found\n")
+                sys.stdout.write(args[1] + ": not found\n")
         elif command.startswith("exit"):
             args = command.split()
             quit(int(args[1]))
