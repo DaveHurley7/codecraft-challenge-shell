@@ -25,6 +25,7 @@ def main():
             sys.stdout.write(args[1] + "\n")
         elif command.startswith("type"):
             args = command.split()
+            print("USING TYPE CMD",args)
             if args[1] in builtin_cmds:
                 sys.stdout.write(args[1] + " is a shell builtin\n")
             elif execcmd := is_exec(args[1]):
