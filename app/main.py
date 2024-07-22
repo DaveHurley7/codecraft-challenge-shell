@@ -9,6 +9,7 @@ def main():
     # Wait for user input
         command = input()
         if command.startswith("exit"):
+            print("CMD:",command)
             args = command.split()
             quit(args[1])
         else:
