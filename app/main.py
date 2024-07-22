@@ -9,7 +9,7 @@ def main():
     # Wait for user input
     while True:
         command = input()
-        sys.stdout.write(command + ": command not found")
+        sys.stdout.write(command + ": command not found\n")
 
 if __name__ == "__main__":
     main()
