@@ -27,11 +27,13 @@ def main():
             args = command.split()
             print("USING TYPE CMD",args)
             if args[1] in builtin_cmds:
+                print("BUILT IN")
                 sys.stdout.write(args[1] + " is a shell builtin\n")
             elif execcmd := is_exec(args[1]):
                 print("EXEC:",execcmd)
                 sys.stdout.write(args[1] + " is " + os.path.absname(args[1]) + "\n")
             else:
+                print("NONE")
                 sys.stdout.write(args[1] + " not found\n")
         elif command.startswith("exit"):
             args = command.split()
