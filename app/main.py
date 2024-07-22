@@ -4,7 +4,6 @@ import os
 builtin_cmds = ["echo","type","exit"]
 
 def is_exec(command):
-    print("CHECKING PATH",command)
     path_dirs = os.environ("PATH").split(":")
     print("PATH DIRS:",path_dirs)
     for pdir in path_dirs:
