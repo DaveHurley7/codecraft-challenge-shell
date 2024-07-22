@@ -36,6 +36,8 @@ def main():
             dir_arg = args[1]
             if os.path.isdir(dir_arg):
                 os.chdir(dir_arg)
+            elif dir_arg == "~":
+                os.chdir(os.environ["HOME"])
             else:
                 sys.stdout.write("cd: " + dir_arg + ": No such file or directory\n")
         elif command.startswith("type"):
