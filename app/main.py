@@ -10,10 +10,7 @@ def is_exec(command):
             dir_files = os.listdir(pdir)
             for file in dir_files:
                 if file == command:
-                    print("DIR:",pdir+"/"+file)
-                    print(os.absname(command))
-                    return os.absname(command)
-    print("PATH NOT FOUND")
+                    return pdir + "/" + file
     return None
 
 def main():
@@ -29,13 +26,10 @@ def main():
         elif command.startswith("type"):
             args = command.split()
             if args[1] in builtin_cmds:
-                print("BUILT IN")
                 sys.stdout.write(args[1] + " is a shell builtin\n")
             elif execpath := is_exec(args[1]):
-                print("EXEC:",args[1])
                 sys.stdout.write(args[1] + " is " + execpath + "\n")
             else:
-                print("NONE")
                 sys.stdout.write(args[1] + " not found\n")
         elif command.startswith("exit"):
             args = command.split()
